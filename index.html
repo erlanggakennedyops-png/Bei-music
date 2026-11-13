@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5e8">
+<title>BE.I AI MUSIC</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#fff8ef;color:#38291f;
+ font-family:Arial,sans-serif;padding:22px;
+}
+header{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:900;color:#df792d}
+.tag{font-size:11px;color:#987b65}
+h1{font-size:30px;margin:35px 0 8px}
+p{color:#927c69;font-size:14px;line-height:1.6}
+.panel{
+ background:#fff;border:1px solid #f1e3d3;
+ border-radius:20px;padding:19px;margin-top:20px;
+}
+label{display:block;font-weight:bold;margin:17px 0 9px}
+textarea,select,input{
+ width:100%;padding:14px;border:1px solid #eadaca;
+ border-radius:12px;background:#fffaf5;font-size:14px;
+ color:#38291f;
+}
+textarea{height:110px;resize:vertical}
+button{
+ border:0;border-radius:13px;padding:15px;
+ background:#e9863c;color:white;font-weight:bold;
+ font-size:15px;cursor:pointer;
+}
+.generate{width:100%;margin-top:20px}
+button:active{opacity:.8}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.track{
+ padding:15px;background:#fff;border-radius:14px;
+ margin-top:12px;border:1px solid #f1e3d3;
+}
+.player{position:sticky;bottom:0;background:#fff5e8;
+ padding:15px;margin:25px -22px -22px;
+ border-top:1px solid #eadaca}
+small{color:#a18b78}
+</style>
+</head>
+<body>
+<header>
+ <div>
+  <div class="logo">BE.I MUSIC ♫</div>
+  <div class="tag">CREATE YOUR OWN SOUND</div>
+ </div>
+ <span>🎧</span>
+</header>
+
+<h1>Create your music.</h1>
+<p>Turn your imagination into music with AI.</p>
+
+<section class="panel">
+ <h3>🎵 Music Generator</h3>
+ <label>Describe your music</label>
+ <textarea id="prompt" placeholder="Example: Emotional lofi hip hop, male rap, female soft chorus, nostalgic atmosphere..."></textarea>
+
+ <label>Music Genre</label>
+ <select id="genre">
+  <option>Lo-fi Hip Hop</option>
+  <option>Indie Pop</option>
+  <option>Bedroom Pop</option>
+  <option>Emo Rap</option>
+  <option>R&B</option>
+  <option>Pop</option>
+  <option>EDM</option>
+  <option>Ambient</option>
+ </select>
+
+ <div class="grid">
+  <div>
+   <label>Vocal</label>
+   <select id="vocal">
+    <option>Male</option>
+    <option>Female</option>
+    <option>Duet</option>
+    <option>Instrumental</option>
+   </select>
+  </div>
+  <div>
+   <label>BPM</label>
+   <input id="bpm" type="number" value="90" min="40" max="220">
+  </div>
+ </div>
+
+ <label>Lyrics</label>
+ <textarea id="lyrics" placeholder="Write your own lyrics (optional)..."></textarea>
+
+ <button class="generate" onclick="generate()">✨ Generate Music</button>
+ <p id="status">AI engine belum terhubung. Ini adalah prototype antarmuka.</p>
+</section>
+
+<section>
+ <h3>My Music Library</h3>
+ <div id="library">
+  <div class="track">
+   <b>Welcome to BE.I MUSIC</b>
+   <p>Start creating your own sound.</p>
+  </div>
+ </div>
+</section>
+
+<div class="player">
+ <b>BE.I MUSIC PLAYER</b>
+ <p>Choose a generated track to play.</p>
+ <audio id="audio" controls style="width:100%"></audio>
+</div>
+
+<script>
+function generate(){
+ const prompt=document.getElementById('prompt').value;
+ if(!prompt.trim()){
+  alert('Tulis deskripsi musik terlebih dahulu!');
+  return;
+ }
+ document.getElementById('status').textContent=
+ 'Prototype berhasil menerima prompt. AI engine belum dihubungkan.';
+}
+</script>
+</body>
+</html>
